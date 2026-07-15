@@ -1,7 +1,5 @@
 # Vane MCP Server - GitHub Copilot Integration
 
-<img src="https://octodex.github.com/images/Professortocat_v2.png" align="right" height="200px" />
-
 A production-ready **Model Context Protocol (MCP) server** that extends GitHub Copilot with GitHub repository management capabilities. Enables AI-driven issue tracking, repository information retrieval, and seamless GitHub integration.
 
 ## ✨ Features
