@@ -74,7 +74,7 @@ Use this URL in any project's `.vscode/mcp.json`:
 ## 🛠️ Available Tools
 
 ### `list_issues`
-List GitHub issues from your repository.
+List GitHub issues fromany of my repository.
 
 **Parameters:**
 - `state` (string): "open", "closed", or "all"
@@ -186,7 +186,7 @@ skills-integrate-mcp-with-copilot/
 2. Create new project from GitHub repo
 3. Name service: `mdabul-project`
 4. Add environment variables
-5. Deploy! Your URL: `https://mdabul-project.railway.app/mcp/`
+5. Deploy! My URL: `https://mdabul-project.railway.app/mcp/`
 
 ### Docker
 
@@ -330,6 +330,6 @@ For issues or questions:
 
 ---
 
-**Your MCP Server:** `https://mdabul-project.railway.app/mcp/`
+**My MCP Server:** `https://mdabul-project.railway.app/mcp/`
 
 Built by MD ABUL HOSSAIN (myou260312-eng) | 2025
