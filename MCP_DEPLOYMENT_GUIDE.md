@@ -67,18 +67,19 @@ You should see JSON with available tools and resources.
 4. In the Railway dashboard:
    - Add environment variables (from `.env`)
    - Railway auto-detects `mcp_server.py` and runs it
-5. Get your public URL from the Railway dashboard
+5. **Name your service:** `mdabul-project` (this will create your URL)
+6. Get your public URL from the Railway dashboard
 
 **Your MCP Server URL:**
 ```
-https://your-railway-domain.railway.app/mcp/
+https://mdabul-project.railway.app/mcp/
 ```
 
 ### Option 2: Heroku (Requires Payment)
 
 ```bash
 heroku login
-heroku create your-mcp-server
+heroku create mdabul-mcp-server
 echo "web: python mcp_server.py" > Procfile
 git add Procfile
 git commit -m "Add Procfile for Heroku"
@@ -122,7 +123,7 @@ docker run -p 3000:3000 \
   "servers": {
     "github": {
       "type": "http",
-      "url": "https://your-railway-domain.railway.app/mcp/"
+      "url": "https://mdabul-project.railway.app/mcp/"
     }
   }
 }
@@ -168,7 +169,7 @@ VANE_ROOT_ID=custom-id             # Custom workspace ID
 
 ## 🧪 Test Your MCP Server
 
-### Test with cURL
+### Test with cURL (Local)
 
 ```bash
 # List server capabilities
@@ -195,6 +196,21 @@ curl -X POST http://localhost:3000/ \
   }'
 ```
 
+### Test with cURL (Production)
+
+```bash
+# Test production server
+curl https://mdabul-project.railway.app/mcp/
+
+# Test list_issues tool on production
+curl -X POST https://mdabul-project.railway.app/ \
+  -H "Content-Type: application/json" \
+  -d '{
+    "tool": "list_issues",
+    "parameters": {"state": "open", "limit": 5}
+  }'
+```
+
 ### Test with Copilot Chat
 
 In VS Code Copilot Chat:
@@ -203,6 +219,45 @@ In VS Code Copilot Chat:
 ```
 
 Copilot should use your MCP server to fetch and display issues.
+
+---
+
+## ✅ Use This MCP Server in Other Projects
+
+**Yes! You can reuse this MCP server in any GitHub project.**
+
+### Step 1: Copy `.vscode/mcp.json` to Your Project
+
+```json
+{
+  "servers": {
+    "github": {
+      "type": "http",
+      "url": "https://mdabul-project.railway.app/mcp/"
+    }
+  }
+}
+```
+
+### Step 2: Update Environment Variables
+
+In your project, create `.env` (or set in Railway/Codespaces):
+```bash
+GITHUB_TOKEN=your_token_here
+GITHUB_REPO_OWNER=your_username
+GITHUB_REPO_NAME=your_repo_name
+```
+
+### Step 3: Use in Copilot Chat
+
+Open Copilot Chat in any project and use:
+```
+@github List all issues in my repository
+@github Create a new issue titled "Bug: Something broken"
+@github Show repository information
+```
+
+**The same MCP server instance handles requests for ANY repository you configure!**
 
 ---
 
@@ -230,7 +285,13 @@ DEBUG_MODE=true python mcp_server.py
 - Click Start button in `.vscode/mcp.json` again
 - Reload VS Code
 - Clear browser cache if using web version
-- Check server is returning capabilities: `curl http://your-url/mcp/`
+- Check server is returning capabilities: `curl https://mdabul-project.railway.app/mcp/`
+
+### MCP Server not accessible in other projects
+- Ensure the Railway URL is public (it is by default)
+- Check firewall/proxy isn't blocking the connection
+- Verify GITHUB_TOKEN in `.env` is valid for the target repository
+- Test connectivity: `curl https://mdabul-project.railway.app/mcp/`
 
 ---
 
@@ -239,34 +300,34 @@ DEBUG_MODE=true python mcp_server.py
 - [ ] Environment configured (`.env` file)
 - [ ] Local server runs: `python mcp_server.py`
 - [ ] Server responds to `curl http://localhost:3000/mcp/`
-- [ ] Deployed to Railway/Heroku/Docker
-- [ ] Production URL accessible
+- [ ] Deployed to Railway as `mdabul-project`
+- [ ] Production URL accessible: `https://mdabul-project.railway.app/mcp/`
 - [ ] `.vscode/mcp.json` updated with production URL
 - [ ] Copilot Chat shows GitHub tools
 - [ ] Can test with sample prompts
+- [ ] Tested in another project repository
 
 ---
 
 ## 📝 Your MCP Server URLs
 
-### Development (Local)
+### Development (Local Testing)
 ```
 http://localhost:3000/mcp/
 ```
 
-### Production (After Deployment)
+### Production (Railway - Shared Across All Projects)
 ```
-https://your-project-name.railway.app/mcp/
+https://mdabul-project.railway.app/mcp/
 ```
 
-### Use in Other Projects
-Add to any project's `.vscode/mcp.json`:
+### Use in Any Project's `.vscode/mcp.json`
 ```json
 {
   "servers": {
     "github": {
       "type": "http",
-      "url": "https://your-project-name.railway.app/mcp/"
+      "url": "https://mdabul-project.railway.app/mcp/"
     }
   }
 }
@@ -276,11 +337,13 @@ Add to any project's `.vscode/mcp.json`:
 
 ## 🎓 Next Steps
 
-1. ✅ Deploy your MCP server
-2. ✅ Get your production URL
-3. ✅ Share URL with team
-4. ✅ Use in other GitHub projects
-5. ✅ Extend tools in `mcp_server.py` for your use cases
+1. ✅ Deploy your MCP server to Railway as `mdabul-project`
+2. ✅ Verify URL works: `https://mdabul-project.railway.app/mcp/`
+3. ✅ Use this URL in your primary project
+4. ✅ Copy `.vscode/mcp.json` to other projects
+5. ✅ Test Copilot Chat integration in each project
+6. ✅ Extend tools in `mcp_server.py` for your use cases
+7. ✅ Share the URL with your team for collaborative use
 
 ---
 
