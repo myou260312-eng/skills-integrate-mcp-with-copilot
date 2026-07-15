@@ -23,7 +23,7 @@ cd skills-integrate-mcp-with-copilot
 
 # 2. Configure environment
 cp .env.example .env
-# Edit .env with your GITHUB_TOKEN
+# Edit .env with GITHUB_TOKEN
 
 # 3. Install dependencies
 pip install -r requirements.txt
@@ -169,7 +169,7 @@ skills-integrate-mcp-with-copilot/
 
 ### In VS Code or Codespace
 
-1. **Update `.vscode/mcp.json`** with your MCP server URL
+1. **Update `.vscode/mcp.json`** with my MCP server URL
 2. **Click Start button** and authenticate
 3. **Open Copilot Chat** and use:
    ```
@@ -244,7 +244,7 @@ In VS Code Copilot Chat:
 
 ## 🔄 Reuse Across Projects
 
-You can use this MCP server in **any GitHub project**:
+We can use this MCP server in **any GitHub project**:
 
 1. Copy `.vscode/mcp.json` to your project
 2. Update `.env` with your repo credentials
@@ -332,4 +332,7 @@ For issues or questions:
 
 **My MCP Server:** `https://mdabul-project.railway.app/mcp/`
 
-Built by MD ABUL HOSSAIN (myou260312-eng) | 2025
+Built by MD ABUL HOSSAIN (myou260312-eng) | 2026
+---
+
+*Copyright © 2026 MD ABUL HOSSAIN (MCP SERVER). All Rights Reserved.*
